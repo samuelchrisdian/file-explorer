@@ -13,6 +13,8 @@ interface FileItem {
   file_extension?: string;
 }
 
+const emit = defineEmits(['fileSelected', 'subfolderSelected']);
+
 const props = defineProps<{
   selectedFolder: number | null;
   selectedSubfolder: number | null;
@@ -20,11 +22,15 @@ const props = defineProps<{
 
 const subfolders = ref<Subfolder[]>([]);
 const files = ref<FileItem[]>([]);
+const selectedSubfolderId = ref<number | null>(null);
+const selectedFileId = ref<number | null>(null);
 
 const fetchSubfolders = async (folderId: number) => {
   try {
     subfolders.value = await getSubfolders(folderId);
     files.value = [];
+    selectedSubfolderId.value = null;
+    selectedFileId.value = null;
   } catch (error) {
     console.error('Failed to fetch subfolders:', error);
     subfolders.value = [];
@@ -35,6 +41,8 @@ const fetchFiles = async (subfolderId: number) => {
   try {
     files.value = await getFiles(subfolderId);
     subfolders.value = [];
+    selectedSubfolderId.value = subfolderId;
+    selectedFileId.value = null;
   } catch (error) {
     console.error('Failed to fetch files:', error);
     files.value = [];
@@ -48,6 +56,8 @@ watch(() => props.selectedFolder, async (folderId) => {
   } else {
     subfolders.value = [];
     files.value = [];
+    selectedSubfolderId.value = null;
+    selectedFileId.value = null;
   }
 }, { immediate: true });
 
@@ -57,8 +67,20 @@ watch(() => props.selectedSubfolder, async (subfolderId) => {
     await fetchFiles(subfolderId);
   } else {
     files.value = [];
+    selectedSubfolderId.value = null;
+    selectedFileId.value = null;
   }
 }, { immediate: true });
+
+const selectSubfolder = (subfolder: Subfolder) => {
+  fetchFiles(subfolder.id_subfolder);
+  emit('subfolderSelected', subfolder);
+};
+
+const selectFile = (file: FileItem) => {
+  selectedFileId.value = file.id_file;
+  emit('fileSelected', file);
+};
 </script>
 
 <template>
@@ -71,6 +93,8 @@ watch(() => props.selectedSubfolder, async (subfolderId) => {
         <li 
           v-for="subfolder in subfolders" 
           :key="subfolder.id_subfolder"
+          @click="selectSubfolder(subfolder)"
+          :class="{ 'selected': selectedSubfolderId === subfolder.id_subfolder }"
         >
           📂 {{ subfolder.name_subfolder }}
         </li>
@@ -83,6 +107,8 @@ watch(() => props.selectedSubfolder, async (subfolderId) => {
         <li 
           v-for="file in files" 
           :key="file.id_file"
+          @click="selectFile(file)"
+          :class="{ 'selected': selectedFileId === file.id_file }"
         >
           📄 {{ file.name_file }}{{ file.file_extension ? `.${file.file_extension}` : '' }}
         </li>
@@ -110,6 +136,16 @@ ul {
 
 li {
   padding: 5px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+.selected {
+  background-color: #e0e0e0;
+  font-weight: bold;
 }
 
 h2, h3 {
