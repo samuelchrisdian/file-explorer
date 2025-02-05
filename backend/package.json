@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "bun run --watch server.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.2.0",
+    "elysia": "^1.2.12",
+    "pg": "^8.13.1"
+  }
+}
