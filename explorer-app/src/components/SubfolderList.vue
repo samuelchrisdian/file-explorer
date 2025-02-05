@@ -15,28 +15,47 @@ interface FileItem {
 
 const props = defineProps<{
   selectedFolder: number | null;
+  selectedSubfolder: number | null;
 }>();
 
 const subfolders = ref<Subfolder[]>([]);
 const files = ref<FileItem[]>([]);
 
+const fetchSubfolders = async (folderId: number) => {
+  try {
+    subfolders.value = await getSubfolders(folderId);
+    files.value = [];
+  } catch (error) {
+    console.error('Failed to fetch subfolders:', error);
+    subfolders.value = [];
+  }
+};
+
+const fetchFiles = async (subfolderId: number) => {
+  try {
+    files.value = await getFiles(subfolderId);
+    subfolders.value = [];
+  } catch (error) {
+    console.error('Failed to fetch files:', error);
+    files.value = [];
+  }
+};
+
+// Watch for changes in selectedFolder and fetch subfolders accordingly
 watch(() => props.selectedFolder, async (folderId) => {
-  if (folderId) {
-    try {
-      const [fetchedSubfolders, fetchedFiles] = await Promise.all([
-        getSubfolders(folderId),
-        getFiles(folderId)
-      ]);
-      
-      subfolders.value = fetchedSubfolders;
-      files.value = fetchedFiles;
-    } catch (error) {
-      console.error('Failed to fetch data:', error);
-      subfolders.value = [];
-      files.value = [];
-    }
+  if (folderId !== null) {
+    await fetchSubfolders(folderId);
   } else {
     subfolders.value = [];
+    files.value = [];
+  }
+}, { immediate: true });
+
+// Watch for changes in selectedSubfolder and fetch files accordingly
+watch(() => props.selectedSubfolder, async (subfolderId) => {
+  if (subfolderId !== null) {
+    await fetchFiles(subfolderId);
+  } else {
     files.value = [];
   }
 }, { immediate: true });
@@ -45,7 +64,7 @@ watch(() => props.selectedFolder, async (folderId) => {
 <template>
   <div class="subfolder-list">
     <h2>Contents</h2>
-    
+
     <div v-if="subfolders.length > 0">
       <h3>Subfolders</h3>
       <ul>

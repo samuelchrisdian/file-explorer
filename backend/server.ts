@@ -42,15 +42,14 @@ app.get("/subfolders/:id_folder", async ({ params }) => {
     }
 });
 
-app.get("/files/:id_folder", async ({ params }) => {
+app.get("/files/:id_subfolder", async ({ params }) => {
     try {
         const { rows } = await pool.query(
-            `SELECT f.id_file, f.name_file 
-             FROM file f
-             JOIN subfolder s ON f.id_subfolder = s.id_subfolder
-             WHERE s.id_folder = $1 
-             ORDER BY f.ord`,
-            [params.id_folder]
+            `SELECT id_file, name_file 
+             FROM file 
+             WHERE id_subfolder = $1 
+             ORDER BY ord`,
+            [params.id_subfolder]
         );
         return rows;
     } catch (error) {
@@ -58,6 +57,7 @@ app.get("/files/:id_folder", async ({ params }) => {
         return { error: "Failed to fetch files" };
     }
 });
+
 
 app.listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
