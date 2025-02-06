@@ -1,0 +1,214 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.2
+-- Dumped by pg_dump version 17.2
+
+-- Started on 2025-02-06 11:01:13
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 4916 (class 1262 OID 16553)
+-- Name: file-explorer; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE "file-explorer" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'English_Indonesia.1252';
+
+
+ALTER DATABASE "file-explorer" OWNER TO postgres;
+
+\connect -reuse-previous=on "dbname='file-explorer'"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 4910 (class 0 OID 16574)
+-- Dependencies: 222
+-- Data for Name: file; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (1, 1, 'File Subfolder A1 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (2, 1, 'File Subfolder A1 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (3, 1, 'File Subfolder A1 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (4, 1, 'File Subfolder A1 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (5, 1, 'File Subfolder A1 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (6, 1, 'File Subfolder A1 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (7, 1, 'File Subfolder A1 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (8, 1, 'File Subfolder A1 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (9, 1, 'File Subfolder A1 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (10, 1, 'File Subfolder A1 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (11, 2, 'File Subfolder A2 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (12, 2, 'File Subfolder A2 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (13, 2, 'File Subfolder A2 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (14, 2, 'File Subfolder A2 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (15, 2, 'File Subfolder A2 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (16, 2, 'File Subfolder A2 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (17, 2, 'File Subfolder A2 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (18, 2, 'File Subfolder A2 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (19, 2, 'File Subfolder A2 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (20, 2, 'File Subfolder A2 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (21, 3, 'File Subfolder A3 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (22, 3, 'File Subfolder A3 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (23, 3, 'File Subfolder A3 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (24, 3, 'File Subfolder A3 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (25, 3, 'File Subfolder A3 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (26, 3, 'File Subfolder A3 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (27, 3, 'File Subfolder A3 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (28, 3, 'File Subfolder A3 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (29, 3, 'File Subfolder A3 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (30, 3, 'File Subfolder A3 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (31, 4, 'File Subfolder A4 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (32, 4, 'File Subfolder A4 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (33, 4, 'File Subfolder A4 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (34, 4, 'File Subfolder A4 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (35, 4, 'File Subfolder A4 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (36, 4, 'File Subfolder A4 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (37, 4, 'File Subfolder A4 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (38, 4, 'File Subfolder A4 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (39, 4, 'File Subfolder A4 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (40, 4, 'File Subfolder A4 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (41, 5, 'File Subfolder A5 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (42, 5, 'File Subfolder A5 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (43, 5, 'File Subfolder A5 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (44, 5, 'File Subfolder A5 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (45, 5, 'File Subfolder A5 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (46, 5, 'File Subfolder A5 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (47, 5, 'File Subfolder A5 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (48, 5, 'File Subfolder A5 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (49, 5, 'File Subfolder A5 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (50, 5, 'File Subfolder A5 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (51, 6, 'File Subfolder B1 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (52, 6, 'File Subfolder B1 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (53, 6, 'File Subfolder B1 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (54, 6, 'File Subfolder B1 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (55, 6, 'File Subfolder B1 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (56, 6, 'File Subfolder B1 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (57, 6, 'File Subfolder B1 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (58, 6, 'File Subfolder B1 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (59, 6, 'File Subfolder B1 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (60, 6, 'File Subfolder B1 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (61, 7, 'File Subfolder B2 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (62, 7, 'File Subfolder B2 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (63, 7, 'File Subfolder B2 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (64, 7, 'File Subfolder B2 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (65, 7, 'File Subfolder B2 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (66, 7, 'File Subfolder B2 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (67, 7, 'File Subfolder B2 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (68, 7, 'File Subfolder B2 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (69, 7, 'File Subfolder B2 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (70, 7, 'File Subfolder B2 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (71, 8, 'File Subfolder B3 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (72, 8, 'File Subfolder B3 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (73, 8, 'File Subfolder B3 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (74, 8, 'File Subfolder B3 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (75, 8, 'File Subfolder B3 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (76, 8, 'File Subfolder B3 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (77, 8, 'File Subfolder B3 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (78, 8, 'File Subfolder B3 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (79, 8, 'File Subfolder B3 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (80, 8, 'File Subfolder B3 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (81, 9, 'File Subfolder B4 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (82, 9, 'File Subfolder B4 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (83, 9, 'File Subfolder B4 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (84, 9, 'File Subfolder B4 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (85, 9, 'File Subfolder B4 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (86, 9, 'File Subfolder B4 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (87, 9, 'File Subfolder B4 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (88, 9, 'File Subfolder B4 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (89, 9, 'File Subfolder B4 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (90, 9, 'File Subfolder B4 - 10', 10);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (91, 10, 'File Subfolder B5 - 1', 1);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (92, 10, 'File Subfolder B5 - 2', 2);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (93, 10, 'File Subfolder B5 - 3', 3);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (94, 10, 'File Subfolder B5 - 4', 4);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (95, 10, 'File Subfolder B5 - 5', 5);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (96, 10, 'File Subfolder B5 - 6', 6);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (97, 10, 'File Subfolder B5 - 7', 7);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (98, 10, 'File Subfolder B5 - 8', 8);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (99, 10, 'File Subfolder B5 - 9', 9);
+INSERT INTO public.file (id_file, id_subfolder, name_file, ord) VALUES (100, 10, 'File Subfolder B5 - 10', 10);
+
+
+--
+-- TOC entry 4906 (class 0 OID 16555)
+-- Dependencies: 218
+-- Data for Name: folder; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.folder (id_folder, name_folder, ord) VALUES (1, 'Folder A', 1);
+INSERT INTO public.folder (id_folder, name_folder, ord) VALUES (2, 'Folder B', 2);
+
+
+--
+-- TOC entry 4908 (class 0 OID 16562)
+-- Dependencies: 220
+-- Data for Name: subfolder; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (1, 1, 'Subfolder A1', 1);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (2, 1, 'Subfolder A2', 2);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (3, 1, 'Subfolder A3', 3);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (4, 1, 'Subfolder A4', 4);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (5, 1, 'Subfolder A5', 5);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (6, 2, 'Subfolder B1', 1);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (7, 2, 'Subfolder B2', 2);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (8, 2, 'Subfolder B3', 3);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (9, 2, 'Subfolder B4', 4);
+INSERT INTO public.subfolder (id_subfolder, id_folder, name_subfolder, ord) VALUES (10, 2, 'Subfolder B5', 5);
+
+
+--
+-- TOC entry 4920 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: file_id_file_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.file_id_file_seq', 100, true);
+
+
+--
+-- TOC entry 4921 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: folder_id_folder_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.folder_id_folder_seq', 2, true);
+
+
+--
+-- TOC entry 4922 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: subfolder_id_subfolder_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.subfolder_id_subfolder_seq', 10, true);
+
+
+-- Completed on 2025-02-06 11:01:13
+
+--
+-- PostgreSQL database dump complete
+--
+
