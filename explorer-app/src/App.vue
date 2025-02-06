@@ -9,6 +9,14 @@ const selectedSubfolder = ref<number | null>(null);
 const selectedFile = ref<number | null>(null);
 
 const updateSelectedFolder = (folder: { id_folder: number; name_folder: string }) => {
+  if (selectedFolder.value === folder.id_folder) {
+    selectedFolder.value = null; // Force reactivity
+    setTimeout(() => {
+      selectedFolder.value = folder.id_folder;
+    }, 0);
+  } else {
+    selectedFolder.value = folder.id_folder;
+  }
   selectedFolder.value = folder.id_folder;
   selectedSubfolder.value = null;
   selectedFile.value = null;

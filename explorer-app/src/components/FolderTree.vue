@@ -29,6 +29,13 @@ const fetchFolders = async () => {
 };
 
 const selectFolder = async (folder: Folder) => {
+  // Close all other folders
+  folders.value.forEach(f => {
+    if (f.id_folder !== folder.id_folder) f.isOpen = false;
+  });
+  
+  const wasOpen = folder.isOpen;
+  
   // If the folder is not open, load its subfolders
   if (!folder.isOpen) {
     try {
@@ -43,12 +50,13 @@ const selectFolder = async (folder: Folder) => {
     folder.isOpen = false;
   }
 
-  // Update selected folder and reset subfolder selection
-  selectedFolderId.value = folder.id_folder;
-  selectedSubfolderId.value = null;
-  
-  // Emit the selected folder event
-  emit('folderSelected', folder);
+  // Only update selection and emit event if we're opening the folder
+  // or if we're selecting a different folder
+  if (!wasOpen || selectedFolderId.value !== folder.id_folder) {
+    selectedFolderId.value = folder.id_folder;
+    selectedSubfolderId.value = null;
+    emit('folderSelected', folder);
+  }
 };
 
 const selectSubfolder = (subfolder: Subfolder, folderId: number) => {
